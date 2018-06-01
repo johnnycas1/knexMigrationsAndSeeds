@@ -13,8 +13,15 @@ module.exports = {
             .returning("*")
             .then(record => record[0]);
     },
-    update(id, hero){
+    update(id, hero) {
+        return database("hero")
+            .where("id", id)
+            .update(hero, "*")
+            .then(record => record[0])
     },
-    delete(id){
+    delete(id) {
+        return database("hero")
+            .where("id", id)
+            .del()
     }
 };
