@@ -16,7 +16,11 @@
 - [build out database-connection]
 - [build queries]
 - [test each route & query using postman]
-
+- [create heroku app]
+- [add postgresql add-on to DB]
+- [push DB to Heroku]
+- [migrate table on heroku DB]
+- [seed data on heroku DB]
 
 ### Steps
 - Create Database
@@ -59,8 +63,30 @@ knex seed:make 01-hero
 ```
 knex seed:run
 ```
-
-
+- Create Heroku app
+```
+heroku create APPNAME
+```
+- Add PostgreSQL add-on to Heroku app
+```
+heroku addons:create heroku-postgresql
+```
+- push to heroku remote
+```
+git push heroku BRANCHNAME
+```
+- Migrate Table onto Heroku DB
+```
+heroku run knex migrate:latest
+```
+- Seed Heroku DB with data
+```
+heroku run knex seed:run
+```
+- check Heroku DB for table and seeded data
+```
+heroku pg:psql
+```
 
 ## Resources
 - [Create DB with Kyle at 28min](https://www.youtube.com/watch?v=qdbHx9bd1uo)
